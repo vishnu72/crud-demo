@@ -1,0 +1,144 @@
+<form [formGroup]="employeeForm" class="border">
+  <h3>{{ title }} Employee</h3>
+  <br />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter the Name"
+    formControlName="name"
+    [ngClass]="{
+      'is-invalid':
+        employeeForm.controls['name'].invalid &&
+        (isSubmitted ||
+          employeeForm.controls['name'].touched ||
+          employeeForm.controls['name'].dirty),
+      'is-valid':
+        employeeForm.controls['name'].valid &&
+        (isSubmitted ||
+          employeeForm.controls['name'].touched ||
+          employeeForm.controls['name'].dirty)
+    }"
+  />
+  <div
+    *ngIf="
+      employeeForm.controls['name'].invalid &&
+      (isSubmitted ||
+        employeeForm.controls['name'].touched ||
+        employeeForm.controls['name'].dirty)
+    "
+  >
+    <span
+      class="text-danger"
+      *ngIf="employeeForm.controls['name'].errors?.['required']"
+    >
+      Enter your Name
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="employeeForm.controls['name'].errors?.['minlength']"
+    >
+      Name should have atleast 3 characters
+    </span>
+  </div>
+  <br />
+  <!-- <input type="text" class="form-control" placeholder="Gender" formControlName="Gender"
+        [ngClass]="{'is-invalid': employeeForm.controls['Gender'].invalid && (isSubmitted || employeeForm.controls['Gender'].touched || employeeForm.controls['Gender'].dirty),
+    'is-valid':employeeForm.controls['Gender'].valid && (isSubmitted || employeeForm.controls['Gender'].touched || employeeForm.controls['Gender'].dirty)}">
+    <div
+        *ngIf="employeeForm.controls['Gender'].invalid && (isSubmitted || employeeForm.controls['Gender'].touched || employeeForm.controls['Gender'].dirty)">
+        <span class="text-danger" *ngIf="employeeForm.controls['Gender'].errors?.['required']">
+            Write your Gender
+        </span>
+        <span class="text-danger" *ngIf="employeeForm.controls['Gender'].errors?.['pattern']">
+            It contains only characters
+        </span>
+    </div>
+    <br> -->
+  <input
+    type="date"
+    class="form-control"
+    placeholder="Enter your BirthDate"
+    formControlName="dob"
+    [ngClass]="{
+      'is-invalid':
+        employeeForm.controls['dob'].invalid &&
+        (isSubmitted ||
+          employeeForm.controls['dob'].touched ||
+          employeeForm.controls['dob'].dirty),
+      'is-valid':
+        employeeForm.controls['dob'].valid &&
+        (isSubmitted ||
+          employeeForm.controls['dob'].touched ||
+          employeeForm.controls['dob'].dirty)
+    }"
+  />
+  <div
+    *ngIf="
+      employeeForm.controls['dob'].invalid &&
+      (isSubmitted ||
+        employeeForm.controls['dob'].touched ||
+        employeeForm.controls['dob'].dirty)
+    "
+  >
+    <span
+      class="text-danger"
+      *ngIf="employeeForm.controls['dob'].errors?.['required']"
+    >
+      Enter your Date of Birth
+    </span>
+  </div>
+  <br />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter your salary"
+    formControlName="salary"
+    [ngClass]="{
+      'is-invalid':
+        employeeForm.controls['salary'].invalid &&
+        (isSubmitted ||
+          employeeForm.controls['salary'].touched ||
+          employeeForm.controls['salary'].dirty),
+      'is-valid':
+        employeeForm.controls['salary'].valid &&
+        (isSubmitted ||
+          employeeForm.controls['salary'].touched ||
+          employeeForm.controls['salary'].dirty)
+    }"
+  />
+  <div
+    *ngIf="
+      employeeForm.controls['salary'].invalid &&
+      (isSubmitted ||
+        employeeForm.controls['salary'].touched ||
+        employeeForm.controls['salary'].dirty)
+    "
+  >
+    <span
+      class="text-danger"
+      *ngIf="employeeForm.controls['salary'].errors?.['required']"
+    >
+      Enter your salary
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="employeeForm.controls['salary'].errors?.['pattern']"
+    >
+      salary contains only numbers
+    </span>
+  </div>
+  <br />
+  <button class="btn btn-success me-4" type="submit" (click)="onSubmit()">
+    Save
+  </button>
+  <button class="btn btn-light" type="button" (click)="onReset()">Reset</button>
+</form>
+
+<br /><br />
+
+<app-employee-list [employeeList]="employeeData"></app-employee-list>
+
+
+
+
+<!-- <app-employee-list [employeeList]="employeeData$ | async"></app-employee-list> -->
